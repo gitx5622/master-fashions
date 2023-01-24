@@ -1,18 +1,31 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Navbar,
   NavbarBrand,
   Collapse,
-  NavbarText,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
+  DropdownToggle,
   Nav,
   NavbarToggler,
   NavItem,
   NavLink,
   Container,
 } from "reactstrap";
+import { logoutUser } from "../state/actions/userActions";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const { userInfo: registeredUserInfo } = useSelector((state) => state.userRegister);
+
+  const handleLogout = () => {
+    dispatch(logoutUser())
+  }
+
   return (
     <header>
       <Navbar className="py-2" color="dark" dark={true} expand="lg">
@@ -20,7 +33,7 @@ const Header = () => {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div>
               <LinkContainer to="/">
-                <NavbarBrand>ProShop</NavbarBrand>
+                <NavbarBrand>Master Fashions</NavbarBrand>
               </LinkContainer>
             </div>
             <div>
@@ -35,14 +48,36 @@ const Header = () => {
                     </LinkContainer>
                   </NavItem>
                   <NavItem>
-                    <LinkContainer to="/login">
+                    <LinkContainer to="/">
                       <NavLink>
-                        <i className="fas fa-user"></i>Login
+                        <i className="fas fa-home"></i>Products
                       </NavLink>
                     </LinkContainer>
                   </NavItem>
+                  {userInfo && registeredUserInfo ? (
+                    <UncontrolledDropdown inNavbar nav>
+                      <DropdownToggle caret nav>
+                        {userInfo.name}
+                      </DropdownToggle>
+                      <DropdownMenu end>
+                        <LinkContainer to="/profile">
+                          <DropdownItem>Profile</DropdownItem>
+                        </LinkContainer>
+                        <DropdownItem onClick={handleLogout}>
+                          Logout
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  ) : (
+                    <NavItem>
+                      <LinkContainer to="/login">
+                        <NavLink>
+                          <i className="fas fa-user"></i>Login
+                        </NavLink>
+                      </LinkContainer>
+                    </NavItem>
+                  )}
                 </Nav>
-                <NavbarText>Simple Text</NavbarText>
               </Collapse>
             </div>
           </div>

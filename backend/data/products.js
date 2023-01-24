@@ -1,7 +1,7 @@
 const products = [
   {
-    name: "Airpods Wireless Bluetooth Headphones",
-    image: "/images/airpods.jpg",
+    name: "Jordan 6 Back to Future",
+    image: "/images/jordan6.jpeg",
     description:
       "Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working",
     brand: "Apple",

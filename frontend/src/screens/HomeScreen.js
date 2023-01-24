@@ -3,7 +3,8 @@ import { Row, Col } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../state/actions/productActions";
 import Product from "../components/Product";
-import HashLoader from "react-spinners/HashLoader";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -18,14 +19,14 @@ const HomeScreen = () => {
 
   return (
     <>
-      <h1>Latest Products</h1>
+      <h1>Latest Fashions</h1>
       {loading ? (
-        <HashLoader />
+        <Loader />
       ) : error ? (
-        <h1>Error</h1>
+        <Message variant="danger">{error}</Message>
       ) : (
         <Row>
-          {products.map((product) => (
+          {products?.map((product) => (
             <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
               <Product product={product} />
             </Col>
