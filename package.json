@@ -8,7 +8,7 @@
     "dev": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
-    "start": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
+    "start": "concurrently --kill-others-on-fail \"npm run client\" \"npm run dev\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
     "build":"cd frontend/ && npm install --only=dev && NODE_ENV=development npm install --no-shrinkwrap && npm run build"
