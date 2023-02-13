@@ -5,12 +5,13 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "client": "node backend/server",
+    "dev": "node backend/server",
     "server": "nodemon backend/server",
-    "start": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "client": "npm start --prefix frontend",
+    "start": "concurrently \"npm run client\" \"npm run dev\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d"
+    "data:destroy": "node backend/seeder -d",
+    "build":"npm install && npm build"
   },
   "author": "George Gitau",
   "license": "MIT",
