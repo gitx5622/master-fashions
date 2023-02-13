@@ -11,7 +11,7 @@
     "start": "concurrently \"npm run client\" \"npm run server\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "build":"cd frontend/ && npm install && npm build"
+    "build":"cd frontend/ && npm install --only=dev && NODE_ENV=development npm install --no-shrinkwrap && npm run build"
   },
   "author": "George Gitau",
   "license": "MIT",
