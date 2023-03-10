@@ -5,7 +5,6 @@ import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
-import { createProxyMiddleware } from 'http-proxy-middleware';
 
 dotenv.config();
 connectDB();
@@ -17,14 +16,13 @@ app.get("/", (req, res) => {
 });
 
 app.use(express.json())
-app.use(createProxyMiddleware(["/api/products","/api/users"], { target: "http://localhost:8200" }));
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = 8200 || 9000;
+const PORT = 8400 || 9000;
 
 app.listen(
   PORT,
