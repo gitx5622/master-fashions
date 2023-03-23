@@ -8,7 +8,7 @@ import {
   SINGLE_PRODUCT_SUCCESS,
 } from "../constants/productConstants.js";
 
-const HOST = "http://127.0.0.1:8500"
+const HOST = "https://master-backend.herokuapp.com"
 
 export const listProducts = () => async (dispatch) => {
   try {
