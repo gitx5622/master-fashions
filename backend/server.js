@@ -22,7 +22,7 @@ app.use("/api/users", userRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = 8400 || 9000;
+const PORT = 8500 || 9000;
 
 app.listen(
   PORT,
