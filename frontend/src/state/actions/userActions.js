@@ -15,11 +15,13 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
 } from "../constants/userContants";
 
+const HOST = "http://127.0.0.1:8500"
+
 export const loginUser = (bodyData) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
-    const { data } = await axios.post("/api/users/login", bodyData, config);
+    const { data } = await axios.post(`${HOST}/api/users/login`, bodyData, config);
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
     localStorage.userInfo = JSON.stringify(data);
   } catch (error) {
@@ -42,7 +44,7 @@ export const registerUser = (bodyData) => async (dispatch) => {
   try {
     dispatch({ type: USER_REGISTER_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
-    const { data } = await axios.post("/api/users/register", bodyData, config);
+    const { data } = await axios.post(`${HOST}/api/users/register`, bodyData, config);
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     localStorage.userInfo = JSON.stringify(data);
   } catch (error) {
@@ -69,7 +71,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token || registeredUserInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/users/${id}`, config);
+    const { data } = await axios.get(`${HOST}/api/users/${id}`, config);
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -100,7 +102,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         },
       }
   
-      const { data } = await axios.put(`/api/users/profile`, user, config)
+      const { data } = await axios.put(`${HOST}/api/users/profile`, user, config)
   
       dispatch({
         type: USER_UPDATE_PROFILE_SUCCESS,

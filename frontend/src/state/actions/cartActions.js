@@ -1,8 +1,10 @@
 import axios from "axios";
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from "../constants/cartConstants";
 
+const HOST = "http://127.0.0.1:8500"
+
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/products/${productId}`);
+  const { data } = await axios.get(`${HOST}/api/products/${productId}`);
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
