@@ -47,7 +47,7 @@ const ProductScreen = () => {
       ) : (
         <Row>
           <Col sm={5}>
-                <Image src={product.image} alt={product.name} fluid rounded/>
+                <Image src={product.image} alt={product.name} fluid rounded style={{height:"300px", width:"100%"}}/>
           </Col>
           <Col sm={4}>
             <ListGroup flush>
