@@ -8,10 +8,12 @@ import {
   SINGLE_PRODUCT_SUCCESS,
 } from "../constants/productConstants.js";
 
+const HOST = "https://master-backend.herokuapp.com"
+
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("/api/products");
+    const { data } = await axios.get(`${HOST}/api/products`);
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -27,7 +29,7 @@ export const listProducts = () => async (dispatch) => {
 export const singleProduct = (id) => async (dispatch) => {
     try {
       dispatch({ type: SINGLE_PRODUCT_REQUEST });
-      const { data } = await axios.get(`/api/products/${id}`);
+      const { data } = await axios.get(`${HOST}/api/products/${id}`);
       dispatch({ type: SINGLE_PRODUCT_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
