@@ -13,7 +13,7 @@ const products = [
   },
   {
     name: "iPhone 11 Pro 256GB Memory",
-    image: "/images/phone.jpg",
+    image: "/images/baiend.jpg",
     description:
       "Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life",
     brand: "Apple",
@@ -25,7 +25,7 @@ const products = [
   },
   {
     name: "Cannon EOS 80D DSLR Camera",
-    image: "/images/camera.jpg",
+    image: "/images/green snikers.jpeg",
     description:
       "Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design",
     brand: "Cannon",
