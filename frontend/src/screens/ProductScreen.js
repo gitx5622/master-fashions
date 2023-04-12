@@ -10,7 +10,7 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-// import { Image } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "../components/Rating";
 import { singleProduct } from "../state/actions/productActions";
@@ -47,14 +47,7 @@ const ProductScreen = () => {
       ) : (
         <Row>
           <Col sm={5}>
-                <div
-                  style={{
-                    width: '100%',
-                    height: '300px',
-                    backgroundImage: url(`${product.image}`),
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover' }} />
+                <Image src={product.image} alt={product.name}  rounded style={{height:"300px", width:"100%"}}/>
           </Col>
           <Col sm={4}>
             <ListGroup flush>
