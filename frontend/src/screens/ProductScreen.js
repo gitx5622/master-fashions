@@ -47,7 +47,7 @@ const ProductScreen = () => {
       ) : (
         <Row>
           <Col sm={5}>
-                <img src={product.image} alt={product.name} style={{ borderRadius: '10px' }}/>
+                <img src={product.image} alt={product.name}/>
           </Col>
           <Col sm={4}>
             <ListGroup flush>
