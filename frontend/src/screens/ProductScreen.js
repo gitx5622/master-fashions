@@ -10,7 +10,7 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-import { Image } from "react-bootstrap";
+// import { Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "../components/Rating";
 import { singleProduct } from "../state/actions/productActions";
