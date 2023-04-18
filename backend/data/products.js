@@ -1,15 +1,15 @@
 const products = [
   {
-    name: "Jordan 6 Back to Future",
-    image: "/images/jordan6.jpeg",
+    name: "Jordan 3 White Sneakers Fashion",
+    image: "/images/jordan_3.jpeg",
     description:
-      "Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working",
-    brand: "Apple",
-    category: "Electronics",
-    price: 89.99,
-    countInStock: 10,
-    rating: 4.5,
-    numReviews: 12,
+      "The Jordan 3 Retro Laser Orange brings out a revering, OG inspired clean appearance with your daily streetwear.",
+    brand: "Jordan",
+    category: "Mens Fashion",
+    price: 5000,
+    countInStock: 2,
+    rating: 5,
+    numReviews: 10,
   },
   {
     name: "iPhone 11 Pro 256GB Memory",
