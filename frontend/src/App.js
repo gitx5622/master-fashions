@@ -15,7 +15,16 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="py-3">
+      <div style={{ backgroundColor: '#CDD4C6'}}>
+            <ul style={{display: 'flex', justifyContent:'center', listStyle: 'none', gap: '20px', padding:'20px'}}>
+              <li>Sneakers</li>
+              <li>Shoes</li>
+              <li>Apparels</li>
+              <li>Trousers</li>
+              <li>T-Shirts</li>
+              </ul>
+          </div>
+      <main className="py-2">
         <Container>
           <Routes>
             <Route path="/shipping" element={<ShippingScreen />} />

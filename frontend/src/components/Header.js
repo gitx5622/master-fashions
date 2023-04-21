@@ -1,5 +1,6 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
+import { Form, InputGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 import {
   Navbar,
@@ -36,6 +37,17 @@ const Header = () => {
                 <NavbarBrand>Master Fashions</NavbarBrand>
               </LinkContainer>
             </div>
+            <div style={{width: '40%'}}>
+            <InputGroup className="mb-3 w-70">
+              <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+              <Form.Control
+                placeholder="Search for fashions sneakers and more"
+                aria-label="search"
+                  aria-describedby="basic-addon1"
+                  style={{borderTopRightRadius: '9px', borderBottomRightRadius: '9px'}}
+              />
+            </InputGroup>
+            </div>
             <div>
               <NavbarToggler onClick={function noRefCheck() {}} />
               <Collapse className="basic-navbar-nav" navbar>
@@ -51,6 +63,13 @@ const Header = () => {
                     <LinkContainer to="/">
                       <NavLink>
                         <i className="fas fa-home"></i>Products
+                      </NavLink>
+                    </LinkContainer>
+                  </NavItem>
+                  <NavItem>
+                    <LinkContainer to="/">
+                      <NavLink>
+                        <i className="fas fa-home"></i>Help
                       </NavLink>
                     </LinkContainer>
                   </NavItem>
