@@ -142,7 +142,7 @@ const ProductScreen = () => {
                     active="true"
                     block="true"
                     styles={{ background: "green" }}
-                    onClick={dispatch(payNow())}
+                    onClick={() => dispatch(payNow())}
                   />
                 </ListGroupItem>
               </ListGroup>
