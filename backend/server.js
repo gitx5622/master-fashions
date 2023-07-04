@@ -3,14 +3,11 @@ import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
-import mpesaRoutes from './routes/mpesaRoutes';
+import mpesaRoutes from './routes/mpesaRoutes.js';
 import userRoutes from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import cors from "cors";
-import {
-  getOAuthToken,
-  lipaNaMpesaOnline,
-} from "./middleware/mpesaMiddleware.js";
+
 
 dotenv.config();
 connectDB();

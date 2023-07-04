@@ -1,4 +1,5 @@
 import axios from "axios";
+import asyncHandler from "express-async-handler";
 
 const getOAuthToken = async (req, res, next) => {
 
@@ -35,8 +36,8 @@ const getOAuthToken = async (req, res, next) => {
     
 };
 
-const lipaNaMpesaOnline = async(req,res) => {
-    let token = req.token;
+const lipaNaMpesaOnline = asyncHandler(async(req,res) => {
+    // let token = req.token;
     let auth = `Bearer 3ZAhXxOGUxPGJSo0CS0GgdUJPwiU`;       
 
     // //getting the timestamp
@@ -88,7 +89,7 @@ const lipaNaMpesaOnline = async(req,res) => {
             message:err['response']['statusText']
         });
 
-    };
-};
+    }
+});
 
 export { lipaNaMpesaOnline, getOAuthToken };

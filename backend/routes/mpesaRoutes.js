@@ -1,5 +1,5 @@
 import express from "express";
-import { lipaNaMpesaOnline } from "../middleware/mpesaMiddleware";
+import { lipaNaMpesaOnline } from "../middleware/mpesaMiddleware.js";
 
 const router = express.Router();
 
