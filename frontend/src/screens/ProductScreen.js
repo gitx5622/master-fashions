@@ -17,6 +17,8 @@ import { singleProduct } from "../state/actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../components/Button";
+import { payNow } from "../state/actions/cartActions";
 
 const ProductScreen = () => {
   const dispatch = useDispatch();
@@ -32,8 +34,8 @@ const ProductScreen = () => {
   }, [id, dispatch]);
 
   const handleAddToCart = () => {
-    navigate(`/cart/${id}?qty=${qty}`)
-  }
+    navigate(`/cart/${id}?qty=${qty}`);
+  };
 
   return (
     <div>
@@ -47,7 +49,12 @@ const ProductScreen = () => {
       ) : (
         <Row>
           <Col sm={5}>
-                <Image src={product.image} alt={product.name}  rounded style={{height:"300px", width:"100%"}}/>
+            <Image
+              src={product.image}
+              alt={product.name}
+              rounded
+              style={{ height: "500px", width: "100%" }}
+            />
           </Col>
           <Col sm={4}>
             <ListGroup flush>
@@ -128,6 +135,15 @@ const ProductScreen = () => {
                   >
                     Add to Cart
                   </Button>
+                </ListGroupItem>
+                <ListGroupItem>
+                  <CustomButton
+                    children="Pay with M~pesa"
+                    active="true"
+                    block="true"
+                    styles={{ background: "green" }}
+                    onClick={dispatch(payNow())}
+                  />
                 </ListGroupItem>
               </ListGroup>
             </Card>

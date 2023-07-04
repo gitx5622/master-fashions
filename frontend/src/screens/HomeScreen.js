@@ -6,6 +6,7 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import CarouselItemComponent from "../components/Carousel";
+import CustomButton from "../components/Button";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const HomeScreen = () => {
     <>
       <Row>
         <Col sm={12}>
-          <CarouselItemComponent/>
+          <CarouselItemComponent />
         </Col>
       </Row>
       {loading ? (
@@ -30,14 +31,23 @@ const HomeScreen = () => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-            <Row>
-          <h3>Latest Fashions</h3>
-          {products?.map((product) => (
-            <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
-              <Product product={product} />
-            </Col>
-          ))}
-        </Row>
+        <div>
+          <Row>
+            <h3>Recommended For You</h3>
+            {products?.map((product) => (
+              <Col sm={12} md={3} xl={3} key={product._id}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+          <CustomButton
+            children="Show More"
+            color="primary"
+            active="true"
+            width="40px"
+            styles={{ display:"flex", justifyContent: "center" }}
+          />
+        </div>
       )}
     </>
   );

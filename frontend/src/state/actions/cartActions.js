@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, PAY_NOW, CART_SAVE_SHIPPING_ADDRESS } from "../constants/cartConstants";
 
 const HOST = "https://master-backend.herokuapp.com"
 
@@ -35,4 +35,13 @@ export const saveShippingAddress = (data) => (dispatch) => {
   });
 
   localStorage.setItem("shippingAddress", JSON.stringify(data));
+};
+
+
+export const payNow = () => async (dispatch, getState) => {
+  const { data } = await axios.post(`${HOST}/api/mpesa`);
+  dispatch({
+    type: PAY_NOW,
+    payload: data
+  });
 };

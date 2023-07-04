@@ -3,26 +3,35 @@ import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
+import mpesaRoutes from './routes/mpesaRoutes';
 import userRoutes from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
-import cors from 'cors';
+import cors from "cors";
+import {
+  getOAuthToken,
+  lipaNaMpesaOnline,
+} from "./middleware/mpesaMiddleware.js";
 
 dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({
-  origin: "http://localhost:3000", 
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("API is Running");
 });
 
-app.use(express.json())
+
+app.use(express.json());
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/mpesa", mpesaRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

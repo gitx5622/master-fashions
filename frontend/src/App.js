@@ -15,15 +15,6 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <div style={{ backgroundColor: '#CDD4C6'}}>
-            <ul style={{display: 'flex', justifyContent:'center', listStyle: 'none', gap: '20px', padding:'20px'}}>
-              <li>Sneakers</li>
-              <li>Shoes</li>
-              <li>Apparels</li>
-              <li>Trousers</li>
-              <li>T-Shirts</li>
-              </ul>
-          </div>
       <main className="py-2">
         <Container>
           <Routes>
