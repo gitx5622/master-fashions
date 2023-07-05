@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Row,
   Col,
@@ -17,8 +17,6 @@ import { singleProduct } from "../state/actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../components/Button";
-import { payNow } from "../state/actions/cartActions";
 
 const ProductScreen = () => {
   const dispatch = useDispatch();
@@ -39,9 +37,6 @@ const ProductScreen = () => {
 
   return (
     <div>
-      <Link to="/">
-        <Button color="primary">Go Back</Button>
-      </Link>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -132,18 +127,10 @@ const ProductScreen = () => {
                     color="primary"
                     disabled={product.countInStock === 0}
                     onClick={handleAddToCart}
+                    style={{ background: "#2B59FF" }}
                   >
                     Add to Cart
                   </Button>
-                </ListGroupItem>
-                <ListGroupItem>
-                  <CustomButton
-                    children="Pay with M~pesa"
-                    active="true"
-                    block="true"
-                    styles={{ background: "green" }}
-                    onClick={() => dispatch(payNow())}
-                  />
                 </ListGroupItem>
               </ListGroup>
             </Card>

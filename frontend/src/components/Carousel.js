@@ -3,7 +3,6 @@ import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselIndicators,
 } from "reactstrap";
 import { carouselitems1, carouselitems2 } from "./constants";
 
@@ -23,12 +22,12 @@ function CarouselItemComponent(args) {
     setActiveIndex(nextIndex);
   };
 
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  };
+  // const goToIndex = (newIndex) => {
+  //   if (animating) return;
+  //   setActiveIndex(newIndex);
+  // };
 
-  const slides1 = carouselitems1.map((item) => {
+  const slides2 = carouselitems1.map((item) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
@@ -39,14 +38,14 @@ function CarouselItemComponent(args) {
           src={item.src}
           alt={item.altText}
           width="100%"
-          height="300px"
-          style={{ borderRadius: "19px" }}
+          height="50%"
+          style={{ borderRadius: "19px", objectFit: 'contain' }}
         />
       </CarouselItem>
     );
   });
 
-  const slides2 = carouselitems2.map((item) => {
+  const slides1 = carouselitems2.map((item) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
@@ -57,36 +56,27 @@ function CarouselItemComponent(args) {
           src={item.src}
           alt={item.altText}
           width="100%"
-          height="300px"
-          style={{ borderRadius: "19px" }}
+          height="50%"
+          style={{ borderRadius: "19px", objectFit: 'contain' }}
         />
       </CarouselItem>
     );
   });
 
   return (
-    <div className="d-flex gap-4">
+    <div className="d-flex gap-4" style={{marginTop:"-20px"}}>
       <Carousel
         activeIndex={activeIndex}
         next={next}
         previous={previous}
         {...args}
+        style={{display: "flex", flexGrow: 1}}
       >
-        <CarouselIndicators
-          items={carouselitems1}
-          activeIndex={activeIndex}
-          onClickHandler={goToIndex}
-        />
-        {slides1}
+        {slides2}
         <CarouselControl
           direction="prev"
           directionText="Previous"
           onClickHandler={previous}
-        />
-        <CarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
         />
       </Carousel>
       <Carousel
@@ -94,22 +84,13 @@ function CarouselItemComponent(args) {
         next={next}
         previous={previous}
         {...args}
+        style={{display: "flex", flexGrow: 1}}
       >
-        <CarouselIndicators
-          items={carouselitems2}
-          activeIndex={activeIndex}
-          onClickHandler={goToIndex}
-        />
-        {slides2}
+        {slides1}
         <CarouselControl
           direction="prev"
           directionText="Previous"
           onClickHandler={previous}
-        />
-        <CarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
         />
       </Carousel>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Form, ListGroup, ListGroupItem } from "react-bootstrap";
 
-const Search = () => {
+const Search = ({ products }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   let filteredProducts = products
@@ -20,7 +21,7 @@ const Search = () => {
             border: "none",
             position: "absolute",
             zIndex: 20,
-            width: "35%",
+            width: "25%",
           }}
         >
           {prod.name}
@@ -28,21 +29,19 @@ const Search = () => {
       </ListGroup>
     ));
   return (
-    <div style={{ width: "40%" }}>
-      <InputGroup className="mb-3 w-70">
-        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control
-          placeholder="Search for fashions sneakers and more"
-          aria-label="search"
-          aria-describedby="basic-addon1"
-          name={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            borderTopRightRadius: "9px",
-            borderBottomRightRadius: "15px",
-          }}
-        />
-      </InputGroup>
+    <div style={{ width: "30%" }}>
+      <Form.Control
+        placeholder="Search for fashions sneakers and more"
+        aria-label="search"
+        aria-describedby="basic-addon1"
+        name={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{
+          borderRadius: "9px",
+          marginBottom: "5px",
+          border: "2px solid black",
+        }}
+      />
       {searchTerm !== "" && filteredProducts.length
         ? { filteredProducts }
         : null}

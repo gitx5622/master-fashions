@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col } from "reactstrap";
+import React, { useEffect } from "react";
+import { Row, Col, Label, FormGroup, Input } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../state/actions/productActions";
 import Product from "../components/Product";
@@ -7,20 +7,9 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import CarouselItemComponent from "../components/Carousel";
 import CustomButton from "../components/Button";
-import Form from "react-bootstrap/Form";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
 
-const HomeScreen = ({ direction, ...args }) => {
+const HomeScreen = () => {
   const dispatch = useDispatch();
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const { loading, products, error } = useSelector(
     (state) => state.productList
@@ -42,64 +31,83 @@ const HomeScreen = ({ direction, ...args }) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <div>
-              <h3>Recommended For You</h3>
-              <Row className="">
-          <Form className="d-flex gap-4 flex-wrap">
-            <Form.Group
-              className="flex-grow-1"
-              controlId="exampleForm.ControlInput1"
-            >
-              <Form.Control placeholder="Search name" />
-            </Form.Group>
-            <Form.Group
-              className="d-flex gap-3 flex-grow-1 text-center"
-              controlId="exampleForm.ControlInput1"
-            >
-              <Form.Control placeholder="Search category" />
-              <CustomButton children="Search" color="primary"/>
-              <Dropdown
-                isOpen={dropdownOpen}
-                toggle={toggle}
-                direction={direction}
-              >
-                <DropdownToggle caret>
-                  <CustomButton children="Add Filters" color="primary" />
-                </DropdownToggle>
-                <DropdownMenu {...args}>
-                  <DropdownItem header>Header</DropdownItem>
-                  <DropdownItem>Some Action</DropdownItem>
-                  <DropdownItem text>Dropdown Item Text</DropdownItem>
-                  <DropdownItem disabled>Action (disabled)</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Foo Action</DropdownItem>
-                  <DropdownItem>Bar Action</DropdownItem>
-                  <DropdownItem>Quo Action</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-              <Dropdown
-                isOpen={dropdownOpen}
-                toggle={toggle}
-                direction={direction}
-              >
-                <DropdownToggle caret>
-                  <CustomButton children="Add Filters" color="primary" />
-                </DropdownToggle>
-                <DropdownMenu {...args}>
-                  <DropdownItem header>Header</DropdownItem>
-                  <DropdownItem>Some Action</DropdownItem>
-                  <DropdownItem text>Dropdown Item Text</DropdownItem>
-                  <DropdownItem disabled>Action (disabled)</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Foo Action</DropdownItem>
-                  <DropdownItem>Bar Action</DropdownItem>
-                  <DropdownItem>Quo Action</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </Form.Group>
-          </Form>
-          </Row>
+        <div className="py-4 mb-4">
           <Row>
+            <Col>
+              <div
+                style={{
+                  background: "white",
+                  border: "px solid aliceblue",
+                  borderRadius: "9px",
+                  padding: "20px",
+                }}
+              >
+                <FormGroup check>
+                  <Input type="radio" />
+                  <Label check>
+                    <h3>Pick up</h3>
+                  </Label>
+                </FormGroup>
+
+                <Row>
+                  <Col xs md="4">
+                    <h5 style={{ textDecoration: "underline" }}>Locations</h5>
+                    <h5 style={{ color: "#2B59FF" }}>
+                      At EastMore Splash(Car Wash)
+                    </h5>
+                  </Col>
+                  <Col xs md="4">
+                    <h5 style={{ textDecoration: "underline" }}>Date</h5>
+                    <h5 style={{ color: "#2B59FF" }}>Any Time</h5>
+                  </Col>
+                  <Col xs md="4">
+                    <h5 style={{ textDecoration: "underline" }}>Contacts</h5>
+                    <h2 style={{ color: "#2B59FF" }}>
+                      0111985068 or 074179036
+                    </h2>
+                  </Col>
+                </Row>
+              </div>
+            </Col>
+            <Col xs>
+              <div
+                style={{
+                  background: "white",
+                  border: "px solid aliceblue",
+                  borderRadius: "9px",
+                  padding: "20px",
+                }}
+              >
+                <FormGroup check>
+                  <Input type="radio" />
+                  <Label>
+                    <h3>Dropoff</h3>
+                  </Label>
+                </FormGroup>
+
+                <Row>
+                  <Col xs md="4">
+                    <h5 style={{ textDecoration: "underline" }}>Locations</h5>
+                    <h5 style={{ color: "#2B59FF" }}>
+                      At EastMore Splash(Car Wash)
+                    </h5>
+                  </Col>
+                  <Col xs md="4">
+                    <h5 style={{ textDecoration: "underline" }}>Date</h5>
+                    <h5 style={{ color: "#2B59FF" }}>Any Time</h5>
+                  </Col>
+                  <Col xs md="4">
+                    <h5 style={{ textDecoration: "underline" }}>Contacts</h5>
+                    <h2 style={{ color: "#2B59FF" }}>
+                      0111985068 or 074179036
+                    </h2>
+                  </Col>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+          <Row className="py-4">
+            <h3>Popular fashions</h3>
             {products?.map((product) => (
               <Col sm={12} md={3} xl={3} key={product._id}>
                 <Product product={product} />
@@ -111,7 +119,11 @@ const HomeScreen = ({ direction, ...args }) => {
             color="primary"
             active="true"
             width="40px"
-            styles={{ display: "flex", justifyContent: "center" }}
+            styles={{
+              display: "flex",
+              justifyContent: "center",
+              background: "#2B59FF",
+            }}
           />
         </div>
       )}

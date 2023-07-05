@@ -15,7 +15,7 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="py-2">
+      <main>
         <Container>
           <Routes>
             <Route path="/shipping" element={<ShippingScreen />} />

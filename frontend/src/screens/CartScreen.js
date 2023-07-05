@@ -11,7 +11,7 @@ import {
   FormGroup,
   Input,
   Card,
-  Button
+  Button,
 } from "reactstrap";
 import { Image } from "react-bootstrap";
 
@@ -32,12 +32,12 @@ const CartScreen = () => {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id))
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
-    navigate('/login?redirect=shipping')
-  }
+    navigate("/login?redirect=shipping");
+  };
 
   return (
     <Row>
@@ -48,7 +48,7 @@ const CartScreen = () => {
             You cart is empty <Link to="/">Go Back</Link>
           </Message>
         ) : (
-          <ListGroup flush>
+          <ListGroup flush style={{borderRadius:"9px"}}>
             {cartItems?.map((cartItem) => (
               <ListGroupItem key={cartItem.product}>
                 <Row>
@@ -89,6 +89,7 @@ const CartScreen = () => {
                       type="button"
                       color="primary"
                       onClick={() => removeFromCartHandler(cartItem.product)}
+                      style={{ background: "#2B59FF" }}
                     >
                       Remove
                     </Button>
@@ -103,7 +104,7 @@ const CartScreen = () => {
         <Card>
           <ListGroup flush>
             <ListGroupItem>
-              <h2>
+              <h2 style={{ color: "#2B59FF" }}>
                 SubTotal:{" "}
                 {cartItems.reduce(
                   (acc, currentItem) => acc + currentItem.qty,
@@ -111,14 +112,16 @@ const CartScreen = () => {
                 )}{" "}
                 items
               </h2>
-              Total Price: $
-              {cartItems
-                .reduce(
-                  (acc, currentItem) =>
-                    acc + currentItem.qty * currentItem.price,
-                  0
-                )
-                .toFixed(2)}
+              <h3>
+                Total Price: $
+                {cartItems
+                  .reduce(
+                    (acc, currentItem) =>
+                      acc + currentItem.qty * currentItem.price,
+                    0
+                  )
+                  .toFixed(2)}
+              </h3>
             </ListGroupItem>
             <ListGroupItem>
               <Button
@@ -127,6 +130,7 @@ const CartScreen = () => {
                 color="primary"
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
+                style={{ background: "#2B59FF" }}
               >
                 Proceed to Checkout
               </Button>

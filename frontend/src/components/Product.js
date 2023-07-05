@@ -8,7 +8,7 @@ const Product = ({ product }) => {
   return (
     <Card className="my-1">
       <Link to={`/product/${product._id}`}>
-        <CardImg alt="Card image cap" src={product.image} top width="100%" />
+        <CardImg alt="Card image cap" src={product.image} top width="100%" height="100%" style={{objectFit:"contain"}} />
       </Link>
       <CardBody>
         <Link to={`/product/${product._id}`}>
@@ -21,8 +21,10 @@ const Product = ({ product }) => {
           value={product.rating}
           text={`  (${product.numReviews} Total reviews)`}
         />
-        <h3>${product.price}</h3>
-        <CustomButton children="View Details" color="primary" active="true" />
+        <div className="d-flex align-items-center justify-content-between">
+          <h1>${product.price}</h1>
+          <CustomButton children="View Details" color="primary" active="true"  styles={{borderRadius:"9px", background:"#2B59FF"}}/>
+        </div>
       </CardBody>
     </Card>
   );
