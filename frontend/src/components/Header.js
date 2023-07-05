@@ -1,6 +1,5 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Navbar,
@@ -22,7 +21,6 @@ import CustomButton from "./Button";
 const Header = () => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
-  const { products } = useSelector((state) => state.productList);
   const { userInfo: registeredUserInfo } = useSelector(
     (state) => state.userRegister
   );

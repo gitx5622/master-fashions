@@ -38,7 +38,7 @@ export const saveShippingAddress = (data) => (dispatch) => {
 };
 
 
-export const payNow = () => async (dispatch, getState) => {
+export const payNow = () => async (dispatch) => {
   const { data } = await axios.post(`${HOST}/api/mpesa/mpesa`);
   dispatch({
     type: PAY_NOW,
