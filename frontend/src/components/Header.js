@@ -15,7 +15,7 @@ import {
   NavLink,
   Container,
 } from "reactstrap";
-import { logoutUser } from "../state/actions/userActions";
+import { logout } from "../state/actions/userActions";
 import CustomButton from "./Button";
 import { Dropdown } from "react-bootstrap";
 
@@ -27,7 +27,7 @@ const Header = () => {
   );
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    dispatch(logout());
   };
 
   return (
