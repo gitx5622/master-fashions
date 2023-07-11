@@ -13,7 +13,7 @@ import {
 import { Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "../components/Rating";
-import { singleProduct } from "../state/actions/productActions";
+import { listProductDetails } from "../state/actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ const ProductScreen = () => {
   );
 
   useEffect(() => {
-    dispatch(singleProduct(id));
+    dispatch(listProductDetails(id));
   }, [id, dispatch]);
 
   const handleAddToCart = () => {

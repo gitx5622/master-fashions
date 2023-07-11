@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
@@ -16,8 +16,10 @@ import {
   ORDER_DELIVER_RESET,
 } from "../state/constants/orderConstants";
 
-const OrderScreen = ({ match, history }) => {
-  const orderId = match.params.id;
+const OrderScreen = () => {
+  const navigate = useNavigate();
+  const { id: orderId } = useParams();
+  console.log(orderId);
 
   const [sdkReady, setSdkReady] = useState(false);
 
@@ -48,7 +50,7 @@ const OrderScreen = ({ match, history }) => {
 
   useEffect(() => {
     if (!userInfo) {
-      history.push("/login");
+      navigate("/login");
     }
 
     const addPayPalScript = async () => {
@@ -74,7 +76,15 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, successPay, successDeliver, order]);
+  }, [
+    dispatch,
+    orderId,
+    successPay,
+    successDeliver,
+    order,
+    navigate,
+    userInfo,
+  ]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
