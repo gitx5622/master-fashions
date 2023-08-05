@@ -38,7 +38,7 @@ const getOAuthToken = async (req, res, next) => {
 
 const lipaNaMpesaOnline = asyncHandler(async(req,res) => {
     // let token = req.token;
-    let auth = `Bearer 3ZAhXxOGUxPGJSo0CS0GgdUJPwiU`;       
+    let auth = `Bearer 3u2BWGYspB0VBd4tNMQNUExpjcWT`;       
 
     // //getting the timestamp
     // let timestamp = new Date().valueOf()
@@ -65,9 +65,9 @@ const lipaNaMpesaOnline = asyncHandler(async(req,res) => {
             "Timestamp": "20230704204745",
             "TransactionType": "CustomerPayBillOnline",
             "Amount": 1,
-            "PartyA": 254741790736,
+            "PartyA": 254711985068,
             "PartyB": 174379,
-            "PhoneNumber": "254741790736",
+            "PhoneNumber": "254711985068",
             "CallBackURL": "https://mydomain.com/path",
             "AccountReference": "CompanyXLTD",
             "TransactionDesc": "Payment of X" 

@@ -15,6 +15,8 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../state/constants/orderConstants";
+import CustomButton from "../components/Button";
+import { payNow } from "../state/actions/cartActions";
 
 const OrderScreen = () => {
   const navigate = useNavigate();
@@ -211,10 +213,13 @@ const OrderScreen = () => {
                   {!sdkReady ? (
                     <Loader />
                   ) : (
-                    <PayPalButton
-                      amount={order.totalPrice}
-                      onSuccess={successPaymentHandler}
-                    />
+                    <>
+                      <PayPalButton
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
+                      />
+                      <CustomButton children="Pay with MPESA" onClick={() => dispatch(payNow())} />
+                    </>
                   )}
                 </ListGroup.Item>
               )}
