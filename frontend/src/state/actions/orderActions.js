@@ -1,4 +1,5 @@
 import axios from "axios";
+import { environment } from "../../utils";
 import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
 import {
   ORDER_CREATE_REQUEST,
@@ -22,7 +23,7 @@ import {
 } from "../constants/orderConstants";
 import { logout } from "./userActions";
 
-const HOST = "http://127.0.0.1:8500";
+let HOST = environment(process.env.NODE_ENV);
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {

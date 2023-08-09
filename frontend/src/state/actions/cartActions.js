@@ -1,4 +1,5 @@
 import axios from "axios";
+import { environment } from "../../utils";
 import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
@@ -7,7 +8,7 @@ import {
   CART_SAVE_PAYMENT_METHOD,
 } from "../constants/cartConstants";
 
-const HOST = "https://master-backend.herokuapp.com";
+let HOST = environment(process.env.NODE_ENV);
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`${HOST}/api/products/${productId}`);
@@ -44,7 +45,7 @@ export const saveShippingAddress = (data) => (dispatch) => {
 };
 
 export const payNow = () => async (dispatch) => {
-  const { data } = await axios.post(`/api/mpesa/mpesa`);
+  const { data } = await axios.post(`${HOST}/api/mpesa/mpesa`);
   dispatch({
     type: PAY_NOW,
     payload: data,
