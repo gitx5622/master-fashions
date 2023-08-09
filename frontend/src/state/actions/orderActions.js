@@ -23,7 +23,7 @@ import {
 } from "../constants/orderConstants";
 import { logout } from "./userActions";
 
-let HOST = environment(process.env.NODE_ENV || "production");
+let HOST = environment(process.env.NODE_ENV);
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {

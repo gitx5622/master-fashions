@@ -28,7 +28,7 @@ import {
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 import { environment } from "../../utils";
 
-let HOST = environment(process.env.NODE_ENV || "production");
+let HOST = environment(process.env.NODE_ENV);
 
 export const loginUser = (email, password) => async (dispatch) => {
   try {
