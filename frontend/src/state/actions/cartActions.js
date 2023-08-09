@@ -8,7 +8,7 @@ import {
   CART_SAVE_PAYMENT_METHOD,
 } from "../constants/cartConstants";
 
-let HOST = environment(process.env.NODE_ENV);
+let HOST = environment(process.env.NODE_ENV || "production");
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`${HOST}/api/products/${productId}`);

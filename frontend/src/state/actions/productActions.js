@@ -25,7 +25,7 @@ import {
 } from "../constants/productConstants";
 import { logout } from "./userActions";
 
-let HOST = environment(process.env.NODE_ENV);
+let HOST = environment(process.env.NODE_ENV || "production");
 
 export const listProducts =
   (keyword = "", pageNumber = "") =>
